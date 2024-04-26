@@ -68,6 +68,8 @@ function applyOptionsBlocking( input ) {
 			limits.removeAttribute( trueName );
 		}
 	}
+
+	input.report();
 }
 
 function addRestrictionTypes( restrictions ) {
