@@ -84,7 +84,7 @@ const addControls = createHigherOrderComponent( ( BlockEdit ) => {
 											label="Maximum selected options"
 											help={ '0 for unlimited' }
 											value={ attributes[ CHECKBOX_LIMITS_MAX ] }
-											min='2'
+											min='0'
 											onChange={ newValue => {
 												setAttributes( { [ CHECKBOX_LIMITS_MAX ] : newValue } );
 											} }
