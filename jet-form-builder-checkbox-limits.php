@@ -3,7 +3,7 @@
  * Plugin Name: JetFormBuilder - Checkbox Limits
  * Plugin URI:  
  * Description: 
- * Version:     1.0.0
+ * Version:     1.0.1
  * Author:      Crocoblock
  * Author URI:  https://github.com/ihslimn/
  * Text Domain: 

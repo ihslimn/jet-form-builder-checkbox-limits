@@ -17,7 +17,7 @@ class Plugin {
 
 	private $url = '';
 
-	public $version = '1.0.0';
+	public $version = '1.0.1';
 
 	public function __construct() {
 		if ( ! function_exists( 'jet_form_builder' ) ) {
@@ -39,7 +39,7 @@ class Plugin {
 			return;
 		}
 		
-		add_action( 'plugins_loaded', array( $this, 'init' ), 10 );
+		add_action( 'plugins_loaded', array( $this, 'init' ), 20 );
 	}
 
 	public function get_url( $path = '' ) {

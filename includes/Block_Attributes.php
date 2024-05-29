@@ -2,8 +2,6 @@
 
 namespace JetFormBuilder_Checkbox_Limits;
 
-use \JetFormBuilder_Checkbox_Limits\Plugin;
-
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
 	die();
@@ -11,21 +9,14 @@ if ( ! defined( 'WPINC' ) ) {
 
 class Block_Attributes {
 
-	public $script_enqueued = false;
-
 	public function __construct() {
-		add_action( 'jet-form-builder/before-start-form-row', array( $this, 'add_attributes' ) );	
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ), -100 );
+		add_action( 'jet-form-builder/before-start-form-row', array( $this, 'add_attributes' ) );
 	}
 
 	public function select_is_not_multiple( $args ) {
 		$block_name = $args['blockName'] ?? '';
 
-		if ( $block_name !== 'jet-forms/select-field' ) {
-			return false;
-		}
-
-		return empty( $args['multiple'] );
+		return $block_name === 'jet-forms/select-field' && empty( $args['multiple'] );
 	}
 
 	public function add_attributes( $block ) {
@@ -64,18 +55,10 @@ class Block_Attributes {
 				$block->add_attribute( 'data-checkbox-limits-max-message', $max_message );
 			}
 		}
-		
-		$block->add_attribute( 'data-validation-type', 'advanced' );
-	}
 
-	public function enqueue_scripts() {
-		wp_enqueue_script(
-			'jfb-checkbox-limits',
-			Plugin::instance()->get_url( '/assets/js/frontend.js' ),
-			array( 'jet-plugins' ),
-			Plugin::instance()->version,
-			false
-		);
+		wp_enqueue_script( 'jet-fb-advanced-reporting' );
+
+		$block->add_attribute( 'data-validation-type', 'advanced' );
 	}
 
 }
